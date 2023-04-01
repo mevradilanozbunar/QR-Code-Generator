@@ -12,7 +12,6 @@ dark.addEventListener("input", handleDarkColor);
 light.addEventListener("input", handleLightColor);
 sizes.addEventListener("change", handleSize);
 qrText.addEventListener("input", handleQRText);
-shareBtn.addEventListener("click", handleShare);
 
 const defaultUrl = "https://www.linkedin.com/in/mevra-dilan-erten/";
 let colorLight = "#ffffff",
@@ -46,7 +45,7 @@ function handleSize(e) {
 
 async function generateQRCode() {
     qrContainer.innerHTML = "";
-    new QRCode("qr-code", {
+    new QRCode(document.getElementById("qr-code"), {
         text,
         height: size,
         width: size,
@@ -56,26 +55,9 @@ async function generateQRCode() {
     download.href = await resolveDataUrl();
 }
 
-async function handleShare() {
-    setTimeout(async () => {
-        try {
-            const base64url = await resolveDataUrl();
-            const blob = await (await fetch(base64url)).blob();
-            const file = new File([blob], "QRCode.png", {
-                type: blob.type,
-            });
-            await navigator.share({
-                files: [file],
-                title: text,
-            });
-        } catch (error) {
-            alert("Your browser doesn't support sharing.");
-        }
-    }, 100);
-}
 
 
-
+//QR kodunun verilerini içeren bir base64 kodunu döndürür.
 function resolveDataUrl() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
