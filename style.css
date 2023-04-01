@@ -76,7 +76,7 @@ a{
 .sizes{
     width: 32.5%;
     height: 40px;
-    color: #fff;
+    color: black;
     background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
     border: 1px solid #ffffff;
     border-radius: 4px;
