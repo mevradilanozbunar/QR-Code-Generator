@@ -111,6 +111,8 @@ a{
     justify-content: center;
 }
 
+
+
 @media (max-width: 512px){
     body{
         max-width: 100%;
